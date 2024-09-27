@@ -1,0 +1,39 @@
+<h1>Teacher Crud</h1>
+
+<h1>Add Teacher</h1>
+<input type="text" name="name" [(ngModel)]="newTeacher.name" placeholder="name" >
+<input type="text" name="email" [(ngModel)]="newTeacher.email" placeholder="email">
+<input type="text" name="password" [(ngModel)]="newTeacher.password" placeholder="password">
+<button (click)="addTeacher()">Addteacger</button>
+<h1>Teacher List</h1>
+<table>
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>email</td>
+            <td>password</td>
+            <td>edit</td>
+            <td>delete</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let teacher of teachers">
+            <td>{{teacher.id}}</td>
+            <td>{{teacher.name}}</td>
+            <td>{{teacher.email}}</td>
+            <td>{{teacher.password}}</td>
+            <td><button (click)="setSelected(teacher)">edit</button></td>
+            <td><button (click)="DeleteTeacher(teacher.id)">Delete</button></td>
+      
+        </tr>
+    </tbody>
+</table>
+@if (selectedTeacher.name !='') {
+    <h1>Edit teacher</h1>
+    <input type="text" name="name" [(ngModel)]="selectedTeacher.name" placeholder="name">
+    <input type="text" name="email" [(ngModel)]="selectedTeacher.email" placeholder="email">
+    <input type="text" name="password" [(ngModel)]="selectedTeacher.password" placeholder="password">
+    <button (click)="editTeacher()">Apply</button>
+
+}
